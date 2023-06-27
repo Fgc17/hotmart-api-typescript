@@ -1,0 +1,15 @@
+{
+    "name": "prettier-config-custom",
+    "version": "0.0.0",
+    "main": ".prettierrc.js",
+    "scripts": {
+        "format": "prettier --write --cache --ignore-unknown .",
+        "format:check": "prettier --check --ignore-unknown ."
+    },
+    "dependencies": {
+        "prettier": "2.8.8"
+    },
+    "peerDependencies": {
+        "prettier": ">=2.0.0"
+    }
+}

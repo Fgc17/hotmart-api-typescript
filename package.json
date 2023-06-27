@@ -1,0 +1,21 @@
+{
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev --parallel",
+    "lint": "turbo lint"
+  },
+  "devDependencies": {
+    "typescript": "latest",
+    "eslint": "^8.38.0",
+    "eslint-config-custom": "*",
+    "prettier-config-custom": "*",
+    "prettier": "^2.8.8",
+    "turbo": "latest"
+  },
+  "packageManager": "yarn@1.22.19"
+}
