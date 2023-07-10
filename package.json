@@ -1,21 +1,19 @@
 {
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "license": "Unlicense",
+  "author": "Fernando Coelho",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev --parallel",
     "lint": "turbo lint"
   },
   "devDependencies": {
-    "typescript": "latest",
-    "eslint": "^8.38.0",
-    "eslint-config-custom": "*",
-    "prettier-config-custom": "*",
+    "eslint": "^8.44.0",
+    "eslint-config-custom": "^0.0.0",
     "prettier": "^2.8.8",
-    "turbo": "latest"
+    "prettier-config-custom": "^0.0.0",
+    "turbo": "latest",
+    "typescript": "latest"
   },
   "packageManager": "yarn@1.22.19"
 }
