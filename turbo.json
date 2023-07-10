@@ -1,5 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["CLIENT_ID", "CLIENT_SECRET", "BASIC"],
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
