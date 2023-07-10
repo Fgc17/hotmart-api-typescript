@@ -1,0 +1,11 @@
+{
+  "name": "@glypho-hotmart-api/endpoints",
+  "version": "1.0.0",
+  "description": "A single file package that provides safety when using Hotmart endpoints",
+  "main": "index.ts",
+  "author": "Fernando Coelho",
+  "license": "Unlicense",
+  "dependencies": {
+    "@glypho-hotmart-api/types": "*"
+  }
+}
