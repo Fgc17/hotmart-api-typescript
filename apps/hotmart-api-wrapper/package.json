@@ -4,9 +4,7 @@
   "license": "Unlicense",
   "author": "Fernando Coelho",
   "main": "./index.ts",
-  "scripts": {
-    "example": "ts-node ./src/examples/getSubscriptions/example.ts"
-  },
+  "scripts": {},
   "dependencies": {
     "@glypho-hotmart-api/endpoints": "*",
     "@glypho-hotmart-api/types": "*",
