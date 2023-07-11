@@ -1,0 +1,27 @@
+{
+  "name": "@glypho-hotmart-api/examples",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "getMembersAreaPage": "ts-node ./getMembersAreaPage/example.ts"
+  },
+  "dependencies": {
+    "@glypho-hotmart-api/wrapper": "*",
+    "@glypho-hotmart-api/endpoints": "*",
+    "dotenv": "16.3.1",
+    "ts-node": "^10.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-custom": "workspace:^",
+    "prettier": "^2.8.8",
+    "prettier-config-custom": "workspace:^",
+    "@types/node": "20.3.2",
+    "@glypho-hotmart-api/types": "*",
+    "tsconfig": "*",
+    "typescript": "latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

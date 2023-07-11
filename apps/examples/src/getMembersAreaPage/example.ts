@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { HotmartClient } from "../../HotmartClient";
-import { HotmartClientConfig } from "../../types/ClientConfig";
+import { HotmartClientConfig, HotmartClient } from "@glypho-hotmart-api/wrapper";
 import 'dotenv/config'
 
 const clientConfig: HotmartClientConfig = {
