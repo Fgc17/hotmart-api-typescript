@@ -4,10 +4,13 @@
   "license": "Unlicense",
   "author": "Fernando Coelho",
   "main": "./index.ts",
-  "scripts": {},
+  "scripts": {
+    "build": "tsup ./index.ts --format cjs --dts"
+  },
   "dependencies": {
     "@glypho-hotmart-api/endpoints": "*",
     "@glypho-hotmart-api/types": "*",
+    "tsup": "^7.1.0",
     "axios": "latest",
     "flat-cache": "3.0.4",
     "ts-node": "^10.9.1"
