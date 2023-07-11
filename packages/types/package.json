@@ -1,10 +1,16 @@
 {
   "name": "@glypho-hotmart-api/types",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "index.ts",
   "dependencies": {
     "tsconfig": "*",
     "typescript": "latest"
+  },
+  "devDependencies": {
+    "eslint": "^8.44.0",
+    "eslint-config-custom": "workspace:^",
+    "prettier": "^2.8.8",
+    "prettier-config-custom": "workspace:^"
   }
 }
