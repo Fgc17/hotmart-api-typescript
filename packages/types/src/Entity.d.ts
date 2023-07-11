@@ -1,8 +1,3 @@
-import { AccessTokenGetRequestResponseData } from "./api/AuthenticationAPI"
-
-
-
-
 /**
  * This is an extension of the HotmartAccessTokenObject and it is used , use it for validating the token.
  * @example
