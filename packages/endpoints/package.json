@@ -5,10 +5,15 @@
   "main": "index.ts",
   "author": "Fernando Coelho",
   "license": "Unlicense",
+  "types": "@glypho-hotmart-api/types",
+  "scripts": {
+    "build": "tsup index.ts --format cjs --dts"
+  },
   "dependencies": {
-    "@glypho-hotmart-api/types": "*"
+    "tsup": "^7.1.0"
   },
   "devDependencies": {
+    "@glypho-hotmart-api/types": "*",
     "eslint": "^8.44.0",
     "eslint-config-custom": "workspace:^",
     "prettier": "^2.8.8",
