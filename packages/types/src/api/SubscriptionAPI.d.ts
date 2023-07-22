@@ -1,13 +1,11 @@
+import { CommonRequest, PagedResponse } from "../API";
 import { Shopper, Subscription, SubscriptionPurchase } from "../Entity";
-import BaseRequest from "./Base/BaseRequest"
-import BaseResponse from "./Base/BaseResponse";
 
 /**
- * Request parameters for the GET subscriptions route: 
+ * Request parameters for the GET subscriptions route:
  * {@link https://developers.hotmart.com/payments/api/v1/subscriptions}
  */
-export interface SubscriptionsGetRequestParameters extends BaseRequest<SubscriptionsGetRequestParameters> {
-
+export interface SubscriptionsGetRequestParameters extends CommonRequest<SubscriptionsGetRequestParameters> {
   /** Shows the ID (it is a 7-digit number) of your subscription product. */
   product_id: number;
 
@@ -46,11 +44,11 @@ export interface SubscriptionsGetRequestParameters extends BaseRequest<Subscript
 
   /**
    * The next payment attempt date. In the case of canceled subscriptions, it will indicate the subscriber's last product access date and no charges will be made after this period.
-   * 
+   *
    * E.g.: the subscriber purchased a product that is billed every 10th of the month. If, on the 20th of this month, the subscriber decided to unsubscribe, the date shown in this field will be the 10th of the subsequent month.
-   * 
+   *
    * This information will be returned in milliseconds, as of 1970-01-01 00:00:00 UTC
-   * 
+   *
    * Here, the filter for subscriptions with the next payment attempt date from that date will be applied. If no value is informed, the current date will be considered. The date must be in milliseconds, starting from 1970-01-01 00:00:00 UTC.
    */
   date_next_charge: number;
@@ -59,30 +57,29 @@ export interface SubscriptionsGetRequestParameters extends BaseRequest<Subscript
   end_date_next_charge: number;
 }
 
-export type SubscriptionsGetRequestResponseData = BaseResponse<Subscription[]>
+export type SubscriptionsGetRequestResponseData = PagedResponse<Subscription[]>;
 /**
- * Request parameters schema for the GET subscriptions purchases route: 
+ * Request parameters schema for the GET subscriptions purchases route:
  * {@link https://developers.hotmart.com/payments/api/v1/subscriptions/:subscriber_code/purchases}
  */
-export interface SubscriptionPurchasesGetRequestParameters extends BaseRequest<SubscriptionPurchasesGetRequestParameters> {
+export interface SubscriptionPurchasesGetRequestParameters extends CommonRequest<SubscriptionPurchasesGetRequestParameters> {
   /** An exclusive subscriber code. */
-  subscriber_code: string
+  subscriber_code: string;
 }
 
 /**
- * Response data schema for the GET subscriptions purchases route: 
+ * Response data schema for the GET subscriptions purchases route:
  * {@link https://developers.hotmart.com/payments/api/v1/subscriptions/:subscriber_code/purchases}
  */
-export type SubscriptionPurchasesGetRequestResponseData = Array<SubscriptionPurchase>
-
+export type SubscriptionPurchasesGetRequestResponseData = Array<SubscriptionPurchase>;
 
 /**
  * Describes a cancelled subscription
- * 
+ *
  * {@link https://developers.hotmart.com/docs/en/v1/subscription/cancel-subscription/}
  */
 export interface CancelledSubscription {
-  status: 'ACTIVE' | 'INACTIVE';
+  status: "ACTIVE" | "INACTIVE";
   subscriber_code: string;
   creation_date: string;
   current_recurrence: number;
@@ -90,24 +87,21 @@ export interface CancelledSubscription {
   date_next_charge: string;
   due_day: 1 | 2 | 3 | 4 | 5 | 6 | 7;
   trial_period: number;
-  interval_type_between_charges: 'DAY' | 'WEEK' | 'MONTH' | 'INVOICE';
+  interval_type_between_charges: "DAY" | "WEEK" | "MONTH" | "INVOICE";
   interval_between_charges: number;
   max_charge_cycles: number;
   activation_date: string;
-  shopper: Shopper
+  shopper: Shopper;
 }
 
 export interface SubscriptionCancelPostRequestParameters {
-  subscriber_code: string
-  send_email: boolean
+  subscriber_code: string;
+  send_email: boolean;
 }
 
-type CancelError = { error: string }
+type CancelError = { error: string };
 
 export interface SubscriptionListCancelPostRequestResponseData {
-  success_subscriptions: CancelledSubscription[],
-  fail_subscriptions: CancelledSubscription[] & CancelError
+  success_subscriptions: CancelledSubscription[];
+  fail_subscriptions: CancelledSubscription[] & CancelError;
 }
-
-
-
