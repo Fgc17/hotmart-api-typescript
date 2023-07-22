@@ -6,8 +6,8 @@
     "getMembersAreaPage": "ts-node ./getMembersAreaPage/example.ts"
   },
   "dependencies": {
-    "@glypho-hotmart-api/wrapper": "*",
-    "@glypho-hotmart-api/endpoints": "*",
+    "@glypho/hotmart-api-wrapper": "workspace:*",
+    "@glypho/hotmart-api-endpoints": "workspace:*",
     "dotenv": "16.3.1",
     "ts-node": "^10.9.1"
   },
@@ -17,8 +17,8 @@
     "prettier": "^2.8.8",
     "prettier-config-custom": "workspace:^",
     "@types/node": "20.3.2",
-    "@glypho-hotmart-api/types": "*",
-    "tsconfig": "*",
+    "@glypho/hotmart-api-types": "workspace:*",
+    "tsconfig": "workspace:*",
     "typescript": "latest"
   },
   "keywords": [],

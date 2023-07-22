@@ -13,7 +13,7 @@
     "tsup": "^7.1.0"
   },
   "devDependencies": {
-    "@glypho-hotmart-api/types": "*",
+    "@glypho/hotmart-api-types": "workspace:*",
     "eslint": "^8.44.0",
     "eslint-config-custom": "workspace:^",
     "prettier": "^2.8.8",

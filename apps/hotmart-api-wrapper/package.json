@@ -21,7 +21,7 @@
     "prettier-config-custom": "workspace:^",
     "@types/flat-cache": "2.0.0",
     "@types/node": "20.3.2",
-    "tsconfig": "*",
+    "tsconfig": "workspace:*",
     "typescript": "latest"
   }
 }
