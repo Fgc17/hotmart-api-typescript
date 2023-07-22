@@ -3,8 +3,8 @@ import { AccessTokenObjectService } from "./AccessTokenObjectService";
 import axios from "axios";
 
 // Hotmart API Packages
-import HotmartTypes from "@glypho-hotmart-api/types";
-import { HotmartEndpointsService } from '@glypho-hotmart-api/endpoints'
+import HotmartTypes from "@glypho/hotmart-api-types";
+import { HotmartEndpointsService } from "@glypho/hotmart-api-endpoints";
 
 export class SubscriptionService {
 

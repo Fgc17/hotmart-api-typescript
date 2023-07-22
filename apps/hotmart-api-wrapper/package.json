@@ -1,5 +1,5 @@
 {
-  "name": "@glypho-hotmart-api/wrapper",
+  "name": "@glypho/hotmart-api-wrapper",
   "version": "1.0.0",
   "license": "Unlicense",
   "author": "Fernando Coelho",
@@ -8,9 +8,8 @@
     "build": "tsup ./index.ts --format cjs --dts"
   },
   "dependencies": {
-    "@glypho-hotmart-api/endpoints": "*",
-    "@glypho-hotmart-api/types": "*",
-    "tsup": "^7.1.0",
+    "@glypho/hotmart-api-endpoints": "*",
+    "@glypho/hotmart-api-types": "*",
     "axios": "latest",
     "flat-cache": "3.0.4",
     "ts-node": "^10.9.1"

@@ -1,5 +1,5 @@
 // Hotmart API Packages
-import HotmartTypes from "@glypho-hotmart-api/types";
+import HotmartTypes from "@glypho/hotmart-api-types";
 
 type HttpMethods = 'get' | 'post' | 'put' | 'delete' | 'patch';
 

@@ -1,7 +1,7 @@
 
 
 // Hotmart API Packages
-import HotmartTypes from "@glypho-hotmart-api/types";
+import HotmartTypes from "@glypho/hotmart-api-types";
 
 export interface HotmartClientConfig {
     environment: HotmartTypes.API.Environment
