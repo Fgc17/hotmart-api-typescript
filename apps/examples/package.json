@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "getMembersAreaPage": "ts-node ./getMembersAreaPage/example.ts"
+    "getMembersAreaPage": "ts-node ./src/getMembersAreaPage/example.ts"
   },
   "dependencies": {
     "@glypho/hotmart-api-wrapper": "workspace:*",
