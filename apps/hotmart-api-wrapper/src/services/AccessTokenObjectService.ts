@@ -32,6 +32,7 @@ export class AccessTokenObjectService {
     if (!isCurrentAccessTokenObjectValid || !compareSecrets) {
       const newAccessToken = await this.generate();
       this.set(newAccessToken);
+      this.setSecret(this.apiContext.secret);
       return newAccessToken;
     }
 
