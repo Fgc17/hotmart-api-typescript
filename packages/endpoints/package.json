@@ -9,10 +9,9 @@
   "scripts": {
     "build": "tsup index.ts --format cjs --dts"
   },
-  "dependencies": {
-    "tsup": "^7.1.0"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "tsup": "^7.1.0",
     "@glypho/hotmart-api-types": "workspace:*",
     "eslint": "^8.44.0",
     "eslint-config-custom": "workspace:^",
