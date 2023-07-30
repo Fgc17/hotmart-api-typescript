@@ -1,5 +1,5 @@
 {
-  "name": "@glypho/hotmart-api-wrapper",
+  "name": "@ferstack/hotmart-api-wrapper",
   "version": "1.0.0",
   "license": "Unlicense",
   "description": "A NodeJS Hotmart API wrapper built with Typescript",
@@ -16,8 +16,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@glypho/hotmart-api-endpoints": "workspace:*",
-    "@glypho/hotmart-api-types": "workspace:*",
+    "@ferstack/hotmart-api-endpoints": "workspace:*",
+    "@ferstack/hotmart-api-types": "workspace:*",
     "flat-cache": "3.0.4"
   },
   "devDependencies": {
