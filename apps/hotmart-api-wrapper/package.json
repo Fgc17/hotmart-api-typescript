@@ -4,8 +4,9 @@
   "license": "Unlicense",
   "description": "A NodeJS Hotmart API wrapper built with Typescript",
   "author": "Fernando Coelho",
-  "main": "./index.ts",
   "scripts": {
+    "ci": "pnpm ci",
+    "dev": "tsc -w",
     "build": "tsup ./index.ts --format cjs --dts"
   },
   "files": [
@@ -15,26 +16,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@glypho/hotmart-api-endpoints": "*",
-    "@glypho/hotmart-api-types": "*",
-    "axios": "latest",
+    "@glypho/hotmart-api-endpoints": "workspace:*",
+    "@glypho/hotmart-api-types": "workspace:*",
     "flat-cache": "3.0.4"
   },
   "devDependencies": {
-    "ts-node": "^10.9.1",
-    "tsup": "^7.1.0",
-    "eslint": "^8.44.0",
-    "eslint-config-custom": "workspace:^",
-    "prettier": "^2.8.8",
-    "prettier-config-custom": "workspace:^",
     "@types/flat-cache": "2.0.0",
     "@types/node": "20.3.2",
+    "eslint": "^8.44.0",
+    "eslint-config-custom": "workspace:*",
+    "prettier": "^2.8.8",
+    "prettier-config-custom": "workspace:*",
+    "ts-node": "^10.9.1",
     "tsconfig": "workspace:*",
+    "tsup": "^7.1.0",
     "typescript": "latest"
-  },
-  "peerDependencies": {
-    "@glypho/hotmart-api-endpoints": "workspace:*",
-    "@glypho/hotmart-api-types": "workspace:*",
-    "axios": "latest"
   }
 }
