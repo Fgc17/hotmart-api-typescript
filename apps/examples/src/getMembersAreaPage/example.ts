@@ -15,8 +15,14 @@ const hotmartClient = new HotmartClient(clientConfig);
 
 (async () => {
   const pages = await hotmartClient.membersAreaService.getPages({
-    subdomain: "my_subdomain",
-    module_id: "2Z7RAMXEJW",
+    url_params: {
+      composition: {
+        module_id: "2Z7RAMXEJW",
+      },
+      query: {
+        subdomain: "my_subdomain",
+      },
+    },
   });
 
   console.log(pages);
