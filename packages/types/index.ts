@@ -1,4 +1,3 @@
+import * as HotmartTypes from "./src/main.js";
 
-import * as HotmartTypes from './src/main'
-
-export default HotmartTypes
+export default HotmartTypes;
