@@ -1,9 +1,6 @@
 // Flat Cache
 import * as flatCache from "flat-cache";
 
-// Axios
-import axios from "axios";
-
 // Types
 import { APIContext } from "../types/ApiContext";
 
@@ -42,29 +39,28 @@ export class AccessTokenObjectService {
   private async generate(): Promise<HotmartTypes.Entity.AccessTokenObject> {
     const { basic, ...tokenUrlParams } = this.apiContext.secret;
 
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: basic,
-    };
+    const endpoint = this.endpointsService.requestBuilder("authentication", "getAccessObject", {
+      authKey: basic,
+      url_params: {
+        query: {
+          grant_type: "client_credentials",
+          ...tokenUrlParams,
+        },
+      },
+    });
 
-    const params = {
-      grant_type: "client_credentials",
-      ...tokenUrlParams,
-    };
-
-    const endpoint = this.endpointsService.getEndpoint("authentication", "getAccessObject");
-
-    const accessTokenObject: HotmartTypes.API.Authentication.AccessTokenGetRequestResponseData | void = await axios({
-      ...endpoint,
-      headers: headers,
-      params: params,
-    })
-      .then(({ data }): HotmartTypes.API.Authentication.AccessTokenGetRequestResponseData => data)
+    const accessTokenObject: HotmartTypes.API.Authentication.AccessTokenPostRequestResponse = await fetch(
+      endpoint.url,
+      endpoint.init
+    )
+      .then((res) => res.json())
       .catch(() => {
         throw new Error("Confira suas credenciais de acesso. Erro 401.");
       });
 
     const expiryDate = new Date().getTime() + accessTokenObject.expires_in;
+
+    accessTokenObject.access_token = "Bearer" + " " + accessTokenObject.access_token;
 
     return {
       ...accessTokenObject,

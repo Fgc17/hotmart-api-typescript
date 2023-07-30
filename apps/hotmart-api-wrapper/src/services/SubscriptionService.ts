@@ -1,6 +1,5 @@
 import { APIContext } from "../types/ApiContext";
 import { AccessTokenObjectService } from "./AccessTokenObjectService";
-import axios from "axios";
 
 // Hotmart API Packages
 import HotmartTypes from "@glypho/hotmart-api-types";
@@ -15,29 +14,23 @@ export class SubscriptionService {
     this.endpointsService = new HotmartEndpointsService(this.apiContext.environment);
   }
 
-  async get(params: Partial<HotmartTypes.API.Subscription.SubscriptionsGetRequestParameters>) {
+  async get(params: HotmartTypes.API.Subscription.SubscriptionsGetRequest) {
     const accessTokenObject = await this.accessTokenObjectService.getValid();
 
-    const headers = {
-      "Content-Type": "application/json",
-      Authorization: "Bearer " + accessTokenObject.access_token,
-    };
+    const request = this.endpointsService.requestBuilder("subscriptions", "get", {
+      ...params,
+      authKey: accessTokenObject.access_token,
+    });
 
-    const endpoint = this.endpointsService.getEndpoint("subscriptions", "get");
-
-    const getSubscriptionResData: HotmartTypes.API.Subscription.SubscriptionsGetRequestResponseData = await axios({
-      ...endpoint,
-      headers: headers,
-      params: params,
-    })
-      .then(({ data }) => {
-        const typedData: HotmartTypes.API.Subscription.SubscriptionsGetRequestResponseData = data;
-        return typedData;
-      })
+    const subscriptions: HotmartTypes.API.Subscription.SubscriptionsGetRequestResponse = await fetch(
+      request.url,
+      request.init
+    )
+      .then((res) => res.json())
       .catch((err) => {
         throw err;
       });
 
-    return getSubscriptionResData;
+    return subscriptions;
   }
 }
