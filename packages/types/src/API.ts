@@ -36,14 +36,14 @@ export type EnvironmentUrl = "https://developers.hotmart.com" | "https://sandbox
 /**
  * Describes common keys along all API requests
  */
-export interface CommonRequest<T> {
+export interface CommonQueryParams<T> {
   select?: Array<keyof T>;
   max_results?: number;
   page_token?: string;
 }
 
 /**
- * Describes common keys along all API responses
+ * Keys that show up on big API responses
  */
 export interface PagedResponse<T> {
   items: T;
