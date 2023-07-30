@@ -13,7 +13,7 @@ This package is about **safer coding experience**.
 ## Installation
 
 ```bash
-npm install @glypho/hotmart-api-wrapper
+npm install @ferstack/hotmart-api-wrapper
 ```
 
 For now, you can figure out how to use it by the examples under /apps folder or using the autocompletion provided. I will write a proper documentation soon. Hotmart also has a [documentation](https://developers.hotmart.com/docs/en/-API) for their API.

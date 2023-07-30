@@ -2,8 +2,8 @@ import { APIContext } from "../types/ApiContext";
 import { AccessTokenObjectService } from "./AccessTokenObjectService";
 
 // Hotmart API Packages
-import HotmartTypes from "@glypho/hotmart-api-types";
-import { HotmartEndpointsService } from "@glypho/hotmart-api-endpoints";
+import HotmartTypes from "@ferstack/hotmart-api-types";
+import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
 
 export class SubscriptionService {
   private accessTokenObjectService: AccessTokenObjectService;

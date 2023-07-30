@@ -10,7 +10,7 @@ While developing a NodeJS backend integration with Hotmart, using TypeScript, I 
 
 This package was conceived with the idea of being system-agnostic. As such, you have the freedom to choose between using my wrapper or exclusively working with the types - the choice is entirely yours!
 
-Simply install it using npm i @glypho/hotmart-api/types and begin using the array of types provided.
+Simply install it using npm i @ferstack/hotmart-api/types and begin using the array of types provided.
 
 In an effort to enhance usability, every type provides examples and descriptions when you hover over them.
 
@@ -27,7 +27,7 @@ Meanwhile, the Entity branch is home to the types returned by the API. These wil
 This package maintains its agnostic stance in terms of import as well. Though the structure might undergo changes in the future, as of now I favor importing the HotmartTypes top module and then using the dot notation to find what I need. Here's an example:
 
 ```ts
-import { HotmartTypes } from "@glypho/hotmart-api/types";
+import { HotmartTypes } from "@ferstack/hotmart-api/types";
 
 // ...
 

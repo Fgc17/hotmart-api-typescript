@@ -1,5 +1,5 @@
 {
-  "name": "@glypho/hotmart-api-types",
+  "name": "@ferstack/hotmart-api-types",
   "version": "1.0.0",
   "license": "MIT",
   "main": "./dist/index.d.ts",

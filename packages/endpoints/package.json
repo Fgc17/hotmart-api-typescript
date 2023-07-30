@@ -1,14 +1,13 @@
 {
-  "name": "@glypho/hotmart-api-endpoints",
+  "name": "@ferstack/hotmart-api-endpoints",
   "version": "1.0.0",
   "description": "A single file package that provides safety when using Hotmart endpoints",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
+  "main": "./dist/index.ts",
+  "types": "./dist/index.js",
   "author": "Fernando Coelho",
   "license": "Unlicense",
   "scripts": {
     "ci": "pnpm ci",
-    "dev": "tsc -w",
     "build": "tsup index.ts --format cjs --dts"
   },
   "files": [
@@ -18,7 +17,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@glypho/hotmart-api-types": "workspace:*"
+    "@ferstack/hotmart-api-types": "workspace:*"
   },
   "devDependencies": {
     "tsup": "^7.1.0",

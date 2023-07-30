@@ -1,14 +1,14 @@
 {
-  "name": "@glypho-hotmart-api/examples",
-  "version": "1.0.0",
+  "name": "@ferstack-hotmart-api/examples",
+  "version": "1.0.1",
   "private": true,
   "scripts": {
     "getMembersAreaPage": "ts-node ./src/getMembersAreaPage/example.ts"
   },
   "dependencies": {
-    "@glypho/hotmart-api-wrapper": "workspace:*",
-    "@glypho/hotmart-api-endpoints": "workspace:*",
-    "@glypho/hotmart-api-types": "workspace:*",
+    "@ferstack/hotmart-api-wrapper": "workspace:*",
+    "@ferstack/hotmart-api-endpoints": "workspace:*",
+    "@ferstack/hotmart-api-types": "workspace:*",
     "dotenv": "16.3.1",
     "ts-node": "^10.9.1"
   },

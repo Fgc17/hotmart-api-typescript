@@ -5,8 +5,8 @@ import * as flatCache from "flat-cache";
 import { APIContext } from "../types/ApiContext";
 
 // Hotmart API Packages
-import HotmartTypes from "@glypho/hotmart-api-types";
-import { HotmartEndpointsService } from "@glypho/hotmart-api-endpoints";
+import HotmartTypes from "@ferstack/hotmart-api-types";
+import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
 
 export class AccessTokenObjectService {
   private cache: flatCache.Cache;

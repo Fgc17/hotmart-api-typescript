@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Hotmart API Packages
-import HotmartTypes from "@glypho/hotmart-api-types";
+import HotmartTypes from "@ferstack/hotmart-api-types";
 
 type HttpMethod = "get" | "post" | "put" | "delete" | "patch";
 
