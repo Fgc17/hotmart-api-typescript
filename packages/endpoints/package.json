@@ -1,6 +1,6 @@
 {
   "name": "@ferstack/hotmart-api-endpoints",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A single file package that provides safety when using Hotmart endpoints",
   "main": "./dist/index.ts",
   "types": "./dist/index.js",

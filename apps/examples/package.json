@@ -1,6 +1,6 @@
 {
   "name": "@ferstack-hotmart-api/examples",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "private": true,
   "scripts": {
     "getMembersAreaPage": "ts-node ./src/getMembersAreaPage/example.ts"
