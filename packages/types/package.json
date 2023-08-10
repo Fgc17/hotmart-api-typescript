@@ -2,6 +2,7 @@
   "name": "@ferstack/hotmart-api-types",
   "version": "1.0.1",
   "license": "MIT",
+  "description": "Typescript definitions for Hotmart API",
   "main": "./dist/index.d.ts",
   "files": [
     "dist"

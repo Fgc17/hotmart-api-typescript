@@ -22,10 +22,7 @@ export class MembersAreaService {
       authKey: accessTokenObject.access_token,
     });
 
-    const modules: HotmartTypes.API.Subscription.SubscriptionsGetRequestResponse = await fetch(
-      endpoint.url,
-      endpoint.init
-    )
+    const modules: HotmartTypes.API.MembersArea.ModulesGetRequestResponse = await fetch(endpoint.url, endpoint.init)
       .then((res) => res.json())
       .catch((err) => {
         throw err;
@@ -42,7 +39,7 @@ export class MembersAreaService {
       authKey: accessTokenObject.access_token,
     });
 
-    const pages: HotmartTypes.API.MembersArea.PagesGetRequest = await fetch(endpoint.url, endpoint.init)
+    const pages: HotmartTypes.API.MembersArea.PagesGetRequestResponse = await fetch(endpoint.url, endpoint.init)
       .then((res) => res.json())
       .catch((err) => {
         throw err;
