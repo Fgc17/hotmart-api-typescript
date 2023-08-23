@@ -26,7 +26,12 @@ export class SubscriptionService {
       request.url,
       request.init
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        throw new Error(res.statusText);
+      })
       .catch((err) => {
         throw err;
       });

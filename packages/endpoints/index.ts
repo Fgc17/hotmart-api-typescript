@@ -95,7 +95,7 @@ export class HotmartEndpointsService {
     }
   ) {
     const resource = this.endpoints[resourceKey];
-    const endpoint: Endpoint = resource[endpointKey];
+    const endpoint: Endpoint = { ...resource[endpointKey] };
 
     if (!endpoint?.baseURL) endpoint.baseURL = this.baseURL;
 

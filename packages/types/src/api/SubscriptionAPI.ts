@@ -9,22 +9,22 @@ export interface SubscriptionsGetRequest {
   url_params: {
     query: {
       /** Shows the ID (it is a 7-digit number) of your subscription product. */
-      product_id: number;
+      product_id?: number;
 
       /** Shows the name of the plan to which the subscriber has selected. This attribute can receive multiple values, as long as the user repeats their key in the request with different values.*/
-      plan: string[];
+      plan?: string[];
 
       /**Unique ID of the subscription plan. */
-      plan_id: number;
+      plan_id?: number;
 
       /** Shows the start date of the subscription. If no value is entered, the current date minus 30 days will be considered. The date must be in milliseconds, from 1970-01-01 00:00:00 UTC.*/
-      accession_date: number;
+      accession_date?: number;
 
       /** The date on which the subscriber requested the cancellation of the subscription. The date must be in milliseconds, from 1970-01-01 00:00:00 UTC. */
-      end_accession_date: number;
+      end_accession_date?: number;
 
       /** Shows the status of the moment when that subscription is found. These statuses can be: ACTIVE, INACTIVE, DELAYED, CANCELLED_BY_CUSTOMER, CANCELLED_BY_SELLER, CANCELLED_BY_ADMIN, STARTED or OVERDUE */
-      status:
+      status?:
         | "ACTIVE"
         | "INACTIVE"
         | "DELAYED"
@@ -35,22 +35,22 @@ export interface SubscriptionsGetRequest {
         | "OVERDUE";
 
       /**Shows the unique code of a subscriber, which might not be the same person who purchased the subscription. */
-      subscriber_code: string;
+      subscriber_code?: string;
 
       /** Shows the subscriber's email. */
-      subscriber_email: string;
+      subscriber_email?: string;
 
       /** Unique identifier for a transaction, for example, HP17715690036014. A transaction takes place when an order is placed. An order can be the generation of a bank payment slip, an approved purchase, a recurring purchase, and more. */
-      transaction: string;
+      transaction?: string;
 
       /** Shows whether the subscription you are looking for has a trial period or not. Some subscriptions may have a trial period at the beginning. */
-      trial: boolean;
+      trial?: boolean;
 
       /** Subscriptions canceled starting from this date. If no value is entered, the current date minus 30 days will be considered. The date must be in milliseconds, starting from 1970-01-01 00:00:00 UTC. */
-      cancelation_date: number;
+      cancelation_date?: number;
 
       /** Subscriptions canceled up until this date. If no value is entered, the current date will be considered. The date must be in milliseconds, starting from 1970-01-01 00:00:00 UTC. */
-      end_cancelation_date: number;
+      end_cancelation_date?: number;
 
       /**
        * The next payment attempt date. In the case of canceled subscriptions, it will indicate the subscriber's last product access date and no charges will be made after this period.
@@ -61,10 +61,10 @@ export interface SubscriptionsGetRequest {
        *
        * Here, the filter for subscriptions with the next payment attempt date from that date will be applied. If no value is informed, the current date will be considered. The date must be in milliseconds, starting from 1970-01-01 00:00:00 UTC.
        */
-      date_next_charge: number;
+      date_next_charge?: number;
 
       /** Here, the filter for subscriptions with the next payment attempt date until this date will be applied. If no value is informed, the current date will be considered. The date must be in milliseconds, starting from 1970-01-01 00:00:00 UTC.*/
-      end_date_next_charge: number;
+      end_date_next_charge?: number;
     } & CommonQueryParams<SubscriptionsGetRequest>;
   };
 }
