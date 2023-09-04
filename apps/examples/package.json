@@ -3,7 +3,9 @@
   "version": "1.0.2",
   "private": true,
   "scripts": {
-    "getMembersAreaPage": "ts-node ./src/getMembersAreaPage/example.ts"
+    "getMembersAreaPage": "ts-node ./src/getMembersAreaPage/example.ts",
+    "getMembersAreaMembers": "ts-node ./src/getMembersAreaMembers/example.ts",
+    "getSales": "ts-node ./src/getSales/example.ts"
   },
   "dependencies": {
     "@ferstack/hotmart-api-wrapper": "workspace:*",
