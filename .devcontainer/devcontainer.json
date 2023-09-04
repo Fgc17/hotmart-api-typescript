@@ -1,0 +1,55 @@
+{
+  "name": "TeoremaDashboard",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/pnpm:2": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode@9.14.0",
+        "rangav.vscode-thunder-client",
+        "GitHub.copilot",
+        "PKief.material-icon-theme",
+        "william-voyek.vscode-nginx",
+        "IronGeek.vscode-env",
+        "dineug.vuerd-vscode",
+        "ms-azuretools.vscode-docker"
+      ],
+      "settings": {
+        "extensions.autoCheckUpdates": false,
+        "extensions.autoUpdate": false,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+        "[typescriptreact]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": true
+        },
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": false,
+        "prettier.useEditorConfig": false,
+        "prettier.configPath": "./.prettierrc.js",
+        "prettier.prettierPath": "./node_modules/prettier",
+        "typescript.tsdk": "node_modules/typescript/lib",
+        "eslint.workingDirectories": ["./"],
+        "material-icon-theme.folders.associations": {
+          "filters": "Rules",
+          "entities": "Class",
+          "dto": "Shared",
+          "strategies": "Fastlane"
+        },
+        "material-icon-theme.activeIconPack": "nest",
+        "explorer.compactFolders": false,
+        "typescript.preferences.importModuleSpecifier": "non-relative",
+        "workbench.tree.indent": 20
+      }
+    }
+  },
+  "forwardPorts": [5432, 4040, 3000, 5000, 8080],
+  "postCreateCommand": "pnpm install -g @changesets/cli"
+}
