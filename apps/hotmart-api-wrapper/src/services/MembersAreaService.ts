@@ -1,9 +1,16 @@
+import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
+import {
+  ModulesGetRequest,
+  ModulesGetRequestResponse,
+  PagesGetRequest,
+  PagesGetRequestResponse,
+  StudentsGetRequest,
+  StudentsGetRequestResponse,
+} from "@ferstack/hotmart-api-types";
 import { APIContext } from "../types/ApiContext";
 import { AccessTokenObjectService } from "./AccessTokenObjectService";
 
 // Hotmart API Packages
-import HotmartTypes from "@ferstack/hotmart-api-types";
-import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
 
 export class MembersAreaService {
   private accessTokenObjectService: AccessTokenObjectService;
@@ -14,37 +21,42 @@ export class MembersAreaService {
     this.endpointsService = new HotmartEndpointsService(this.apiContext.environment);
   }
 
-  async getModules(params: HotmartTypes.API.MembersArea.ModulesGetRequest) {
+  async getModules(params: ModulesGetRequest) {
     const accessTokenObject = await this.accessTokenObjectService.getValid();
 
-    const endpoint = this.endpointsService.requestBuilder("membersArea", "getModules", {
+    const request = this.endpointsService.requestBuilder("membersArea", "getModules", {
       ...params,
       authKey: accessTokenObject.access_token,
     });
 
-    const modules: HotmartTypes.API.MembersArea.ModulesGetRequestResponse = await fetch(endpoint.url, endpoint.init)
-      .then((res) => res.json())
-      .catch((err) => {
-        throw err;
-      });
+    const modules: ModulesGetRequestResponse = await this.endpointsService.fetchData(request);
 
     return modules;
   }
 
-  async getPages(params: HotmartTypes.API.MembersArea.PagesGetRequest) {
+  async getPages(params: PagesGetRequest) {
     const accessTokenObject = await this.accessTokenObjectService.getValid();
 
-    const endpoint = this.endpointsService.requestBuilder("membersArea", "getPages", {
+    const request = this.endpointsService.requestBuilder("membersArea", "getPages", {
       ...params,
       authKey: accessTokenObject.access_token,
     });
 
-    const pages: HotmartTypes.API.MembersArea.PagesGetRequestResponse = await fetch(endpoint.url, endpoint.init)
-      .then((res) => res.json())
-      .catch((err) => {
-        throw err;
-      });
+    const pages: PagesGetRequestResponse = await this.endpointsService.fetchData(request);
 
     return pages;
+  }
+
+  async getMembers(params: StudentsGetRequest) {
+    const accessTokenObject = await this.accessTokenObjectService.getValid();
+
+    const request = this.endpointsService.requestBuilder("membersArea", "getStudents", {
+      ...params,
+      authKey: accessTokenObject.access_token,
+    });
+
+    const students: StudentsGetRequestResponse = await this.endpointsService.fetchData(request);
+
+    return students;
   }
 }

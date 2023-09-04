@@ -3,10 +3,10 @@ import * as flatCache from "flat-cache";
 
 // Types
 import { APIContext } from "../types/ApiContext";
+import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
+import { AccessTokenObject, AccessTokenPostRequestResponse, Secret } from "@ferstack/hotmart-api-types";
 
 // Hotmart API Packages
-import HotmartTypes from "@ferstack/hotmart-api-types";
-import { HotmartEndpointsService } from "@ferstack/hotmart-api-endpoints";
 
 export class AccessTokenObjectService {
   private cache: flatCache.Cache;
@@ -17,7 +17,7 @@ export class AccessTokenObjectService {
     this.endpointsService = new HotmartEndpointsService(this.apiContext.environment);
   }
 
-  public async getValid(): Promise<HotmartTypes.Entity.AccessTokenObject> {
+  public async getValid(): Promise<AccessTokenObject> {
     const currentAccessTokenObject = this.get();
 
     const isCurrentAccessTokenObjectValid = this.validate(currentAccessTokenObject);
@@ -36,7 +36,7 @@ export class AccessTokenObjectService {
     return currentAccessTokenObject;
   }
 
-  private async generate(): Promise<HotmartTypes.Entity.AccessTokenObject> {
+  private async generate(): Promise<AccessTokenObject> {
     const { basic, ...tokenUrlParams } = this.apiContext.secret;
 
     const endpoint = this.endpointsService.requestBuilder("authentication", "getAccessObject", {
@@ -49,10 +49,7 @@ export class AccessTokenObjectService {
       },
     });
 
-    const accessTokenObject: HotmartTypes.API.Authentication.AccessTokenPostRequestResponse = await fetch(
-      endpoint.url,
-      endpoint.init
-    )
+    const accessTokenObject: AccessTokenPostRequestResponse = await fetch(endpoint.url, endpoint.init)
       .then((res) => res.json())
       .catch(() => {
         throw new Error("Confira suas credenciais de acesso. Erro 401.");
@@ -68,7 +65,7 @@ export class AccessTokenObjectService {
     };
   }
 
-  private validate(accessTokenObject: HotmartTypes.Entity.AccessTokenObject) {
+  private validate(accessTokenObject: AccessTokenObject) {
     if (!accessTokenObject) return false;
 
     const currentDate = new Date().getTime();
@@ -78,16 +75,16 @@ export class AccessTokenObjectService {
     return true;
   }
 
-  private setSecret(secret: HotmartTypes.Entity.Secret) {
+  private setSecret(secret: Secret) {
     this.cache.setKey("secret", secret);
     this.cache.save(true);
   }
 
-  private getSecret(): HotmartTypes.Entity.Secret {
+  private getSecret(): Secret {
     return this.cache.getKey("secret");
   }
 
-  private set(accessTokenObject: HotmartTypes.Entity.AccessTokenObject) {
+  private set(accessTokenObject: AccessTokenObject) {
     this.cache.setKey("accessTokenObject", {
       ...accessTokenObject,
       expiryDate: accessTokenObject.expires_in + new Date().getTime(),
@@ -95,7 +92,7 @@ export class AccessTokenObjectService {
     this.cache.save(true);
   }
 
-  private get(): HotmartTypes.Entity.AccessTokenObject {
+  private get(): AccessTokenObject {
     return this.cache.getKey("accessTokenObject");
   }
 }

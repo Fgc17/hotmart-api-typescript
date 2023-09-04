@@ -1,8 +1,8 @@
 // Hotmart API Packages
-import HotmartTypes from "@ferstack/hotmart-api-types";
+import { Environment, Secret } from "../../../../packages/utils/types/dist/main";
 
 export interface HotmartClientConfig {
-  environment: HotmartTypes.API.Environment;
-  secret: HotmartTypes.Entity.Secret;
+  environment: Environment;
+  secret: Secret;
   treatErrors?: boolean;
 }
