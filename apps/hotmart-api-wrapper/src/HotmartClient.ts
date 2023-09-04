@@ -5,6 +5,7 @@ import { SubscriptionService } from "./services/SubscriptionService";
 import { HotmartClientConfig } from "./types/ClientConfig";
 import { APIContext } from "./types/ApiContext";
 import { MembersAreaService } from "./services/MembersAreaService";
+import { SalesService } from "./services/SalesService";
 
 /**
  * The main wrapper class. You need to initialize it with the following object:
@@ -25,6 +26,7 @@ import { MembersAreaService } from "./services/MembersAreaService";
 export class HotmartClient {
   subscriptionService: SubscriptionService;
   membersAreaService: MembersAreaService;
+  salesService: SalesService;
 
   constructor(private clientConfig: HotmartClientConfig) {
     const _clientConfig = this.clientConfig;
@@ -36,5 +38,6 @@ export class HotmartClient {
 
     this.subscriptionService = new SubscriptionService(apiContext);
     this.membersAreaService = new MembersAreaService(apiContext);
+    this.salesService = new SalesService(apiContext);
   }
 }
