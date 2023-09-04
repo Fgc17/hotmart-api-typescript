@@ -1,5 +1,5 @@
-import { CommonQueryParams, PagedResponse } from "../API";
-import { MemberAreaModule, MemberAreaPage, MemberAreaStudent } from "../Entity";
+import { CommonQueryParams, PagedResponse } from "../api/api.models";
+import { MemberAreaModule, MemberAreaPage, MemberAreaStudent } from "./membersArea.entities";
 
 export interface ModulesGetRequest {
   url_params: {
@@ -19,15 +19,19 @@ export interface PagesGetRequest {
     };
     query: {
       subdomain: string;
-    } & CommonQueryParams<PagesGetRequestResponse[0]>;
+    } & CommonQueryParams<MemberAreaPage>;
   };
 }
 
 export type PagesGetRequestResponse = MemberAreaPage[];
 
 export interface StudentsGetRequest {
-  subdomain: string;
-  email?: string;
+  url_params: {
+    query: {
+      subdomain: string;
+      email?: string;
+    } & CommonQueryParams<MemberAreaStudent>;
+  };
 }
 
 export type StudentsGetRequestResponse = PagedResponse<MemberAreaStudent[]>;

@@ -1,4 +1,5 @@
-import { HotmartAccessTokenObject, Secret } from "../Entity";
+import { HotmartAccessTokenObject } from "./auth.entities";
+import { Secret } from "./auth.models";
 
 export interface AccessTokenObjectPostRequest {
   url_params: {

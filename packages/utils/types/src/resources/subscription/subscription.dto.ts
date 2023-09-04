@@ -1,5 +1,6 @@
-import { CommonQueryParams, PagedResponse } from "../API";
-import { Shopper, Subscription, SubscriptionPurchase } from "../Entity";
+import { CommonQueryParams, PagedResponse } from "../api/api.models";
+import { Subscription, SubscriptionPurchase } from "./subscriptions.entites";
+import { Shopper } from "./subscriptions.models";
 
 /**
  * Request parameters for the GET subscriptions route:

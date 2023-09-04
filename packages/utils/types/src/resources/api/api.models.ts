@@ -1,7 +1,3 @@
-import * as Authentication from "./api/AuthenticationAPI";
-import * as Subscription from "./api/SubscriptionAPI";
-import * as MembersArea from "./api/MembersAreaAPI";
-
 /**
  * Pagination information that comes with big API responses
  * 
@@ -49,5 +45,3 @@ export interface PagedResponse<T> {
   items: T;
   page_info: PageInfo;
 }
-
-export { Authentication, Subscription, MembersArea };

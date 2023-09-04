@@ -1,6 +1,15 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // Hotmart API Packages
-import HotmartTypes from "@ferstack/hotmart-api-types";
+import HotmartTypes, {
+  AccessTokenObjectPostRequest,
+  Environment,
+  EnvironmentUrl,
+  ModulesGetRequest,
+  PagesGetRequest,
+  SalesGetRequest,
+  StudentsGetRequest,
+  SubscriptionsGetRequest,
+} from "@ferstack/hotmart-api-types";
 
 type HttpMethod = "get" | "post" | "put" | "delete" | "patch";
 
@@ -10,8 +19,20 @@ type Params<T extends ResourcesKeys, U extends EndpointKeys<T>> = "params" exten
   ? Endpoints[T][U]["params"]
   : never;
 
+interface Request {
+  init: {
+    method: HttpMethod;
+    headers: {
+      "Content-Type": string;
+      Authorization: any;
+    };
+    body: any;
+  };
+  url: string;
+}
+
 type Endpoint = {
-  baseURL?: HotmartTypes.API.EnvironmentUrl;
+  baseURL?: EnvironmentUrl;
   url: string;
   method: HttpMethod;
 };
@@ -21,16 +42,17 @@ type Endpoints = {
     getModules: {
       url: "club/api/v1/modules?subdomain=:subdomain&is_extra=:is_extra";
       method: "get";
-      params?: HotmartTypes.API.MembersArea.ModulesGetRequest;
+      params?: ModulesGetRequest;
     };
     getPages: {
       url: `club/api/v1/modules/:module_id/pages`;
       method: "get";
-      params?: HotmartTypes.API.MembersArea.PagesGetRequest;
+      params?: PagesGetRequest;
     };
     getStudents: {
-      url: "students";
+      url: "club/api/v1/users";
       method: "get";
+      params?: StudentsGetRequest;
     };
   };
   authentication: {
@@ -38,14 +60,21 @@ type Endpoints = {
       baseURL: "https://api-sec-vlc.hotmart.com";
       url: "security/oauth/token";
       method: "post";
-      params?: HotmartTypes.API.Authentication.AccessTokenObjectPostRequest;
+      params?: AccessTokenObjectPostRequest;
     };
   };
   subscriptions: {
     get: {
       url: "payments/api/v1/subscriptions";
       method: "get";
-      params?: HotmartTypes.API.Subscription.SubscriptionsGetRequest;
+      params?: SubscriptionsGetRequest;
+    };
+  };
+  sales: {
+    get: {
+      url: "payments/api/v1/sales/history";
+      method: "get";
+      params?: SalesGetRequest;
     };
   };
 };
@@ -62,7 +91,7 @@ export class HotmartEndpointsService {
         method: "get",
       },
       getStudents: {
-        url: "students",
+        url: "club/api/v1/users",
         method: "get",
       },
     },
@@ -79,11 +108,17 @@ export class HotmartEndpointsService {
         method: "get",
       },
     },
+    sales: {
+      get: {
+        url: "payments/api/v1/sales/history",
+        method: "get",
+      },
+    },
   };
 
-  private baseURL: HotmartTypes.API.EnvironmentUrl;
+  private baseURL: EnvironmentUrl;
 
-  constructor(private environment: HotmartTypes.API.Environment) {
+  constructor(private environment: Environment) {
     this.baseURL = environment === "production" ? "https://developers.hotmart.com" : "https://sandbox.hotmart.com";
   }
 
@@ -95,7 +130,7 @@ export class HotmartEndpointsService {
     }
   ) {
     const resource = this.endpoints[resourceKey];
-    const endpoint: Endpoint = { ...resource[endpointKey] };
+    const endpoint = { ...resource[endpointKey] } as Endpoint;
 
     if (!endpoint?.baseURL) endpoint.baseURL = this.baseURL;
 
@@ -104,7 +139,20 @@ export class HotmartEndpointsService {
     return request;
   }
 
-  private generateRequest(endpoint: Endpoint, params: any) {
+  async fetchData(request: Request) {
+    return await fetch(request.url, request.init)
+      .then((res) => {
+        if (res.status === 200) {
+          return res.json();
+        }
+        throw new Error(res.statusText);
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
+  private generateRequest(endpoint: Endpoint, params: any): Request {
     const compositionParams = params.url_params?.composition;
     const queryParams = params.url_params?.query;
     const headers = {

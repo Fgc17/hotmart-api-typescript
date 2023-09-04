@@ -3,13 +3,18 @@
   "version": "1.0.1",
   "license": "MIT",
   "description": "Typescript definitions for Hotmart API",
-  "main": "./dist/index.d.ts",
+  "main": "./dist/main.js",
+  "module": "commonjs",
   "files": [
     "dist"
   ],
+  "_buildScripts": {
+    "files": "./src/resources/",
+    "dist": "./src/main.ts",
+    "export_types": true
+  },
   "scripts": {
-    "dev": "tsc --watch",
-    "build": "tsc"
+    "dev": "tsc --watch & lib_builder ./"
   },
   "publishConfig": {
     "access": "public"
@@ -21,6 +26,7 @@
     "prettier": "^2.8.8",
     "tsconfig": "workspace:*",
     "eslint-config-custom": "workspace:*",
-    "prettier-config-custom": "workspace:*"
+    "prettier-config-custom": "workspace:*",
+    "build-scripts": "workspace:*"
   }
 }
