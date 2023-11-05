@@ -49,6 +49,8 @@ export class AuthenticationService {
       },
     });
 
+    if (!accessTokenObject) throw new Error("Error while generating token object");
+
     const expiryDate = new Date().getTime() + accessTokenObject.expires_in;
 
     accessTokenObject.access_token = "Bearer" + " " + accessTokenObject.access_token;

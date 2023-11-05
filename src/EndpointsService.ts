@@ -1,7 +1,7 @@
 import { AuthenticationService } from "./AuthenticationService";
 import { endpoints } from "./constants/endpoints";
 import { APIContext } from "./types/ApiContext";
-import { ResourcesKeys, EndpointKeys, Params, Endpoint, IRequest } from "./types/Endpoints";
+import { ResourcesKeys, EndpointKeys, Params, Endpoint, IRequest, Endpoints, Response } from "./types/Endpoints";
 
 export class EndpointsService {
   constructor(private context: APIContext, private authenticationService?: AuthenticationService) {}
@@ -20,7 +20,7 @@ export class EndpointsService {
 
     const request = await this.generateRequest(endpoint, params);
 
-    return await this.fetchData(request);
+    return (await this.fetchData(request)) as Response<R, E>;
   }
 
   private async fetchData(request: IRequest) {
