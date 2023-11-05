@@ -1,20 +1,38 @@
 {
-  "private": true,
+  "name": "@ferstack/hotmart-api-wrapper",
+  "version": "2.0.0",
   "license": "Unlicense",
+  "description": "A NodeJS Hotmart API wrapper built with Typescript",
   "author": "Fernando Coelho",
   "scripts": {
-    "publish-packages": "turbo run build lint && changeset version && changeset publish",
-    "build": "turbo build",
-    "dev": "turbo dev --parallel",
-    "lint": "turbo lint"
+    "ci": "pnpm ci",
+    "dev": "tsc -w",
+    "build": "tsc"
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "flat-cache": "3.0.4",
+    "dotenv": "16.3.1"
   },
   "devDependencies": {
-    "eslint": "^8.44.0",
-    "eslint-config-custom": "workspace:^",
+    "ts-node": "^10.9.1",
+    "@types/flat-cache": "2.0.0",
+    "@types/node": "20.3.2",
     "prettier": "^2.8.8",
-    "prettier-config-custom": "workspace:^",
-    "turbo": "latest",
-    "typescript": "latest"
-  },
-  "packageManager": "pnpm@8.6.9"
+    "tsup": "^7.1.0",
+    "typescript": "latest",
+    "eslint": "^8.44.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-react": "7.28.0",
+    "eslint-config-turbo": "^1.9.3",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1"
+  }
 }
